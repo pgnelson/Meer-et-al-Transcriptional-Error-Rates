@@ -39,10 +39,10 @@ pchisq(2*(logLik(separate_slopes_glm)[1]-logLik(ga_glm)[1]), df=9, lower.tail=FA
 starting_vals = c(-10^-6, 0,10^-5, 10^-5, 10^-5, 10^-5, 10^-5, 10^-5, 10^-5, 10^-5, 10^-5, 10^-5, 10^-5, 10^-5, 10^-5,10^-5,10^-5)
 summary(ga_syn_glm<-glm(E ~subtype:R+condition:R+SNS:R + RlogA+type_GA+0,start = starting_vals, family = poisson(link = identity), data = final_ecoli_binned_coding_table))
 print("p-value associated with including separate intercepts for synonymous and non-synonymous errors")
-pchisq(2*(logLik(ga_syn_glm)[1]-logLik(ga_glm)[1]), df=9, lower.tail=FALSE)
+pchisq(2*(logLik(ga_syn_glm)[1]-logLik(ga_glm)[1]), df=1, lower.tail=FALSE)
 
 #testing groEL
 starting_vals = c(-10^-6, 0,10^-5, 10^-5, 10^-5, 10^-5, 10^-5, 10^-5, 10^-5, 10^-5, 10^-5, 10^-5, 10^-5, 10^-5, 10^-5,10^-5,10^-5)
 summary(ga_groel_glm<-glm(E ~subtype:R+condition:R +groEL:R + RlogA+type_GA+0,start = starting_vals, family = poisson(link = identity), data = final_ecoli_binned_coding_table))
 print("p-value associated with including separate intercepts for groEL client proteins")
-pchisq(2*(logLik(ga_groel_glm)[1]-logLik(ga_glm)[1]), df=9, lower.tail=FALSE)
+pchisq(2*(logLik(ga_groel_glm)[1]-logLik(ga_glm)[1]), df=1, lower.tail=FALSE)
